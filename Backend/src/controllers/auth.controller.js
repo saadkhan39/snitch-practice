@@ -98,6 +98,7 @@ export const getMe = async (req, res) => {
             contact:user.contact,
             email:user.email,   
             role:user.role,
-        }
+        },
+        message:"User fetched successfully"
     })
 }
