@@ -32,3 +32,15 @@ export const validateRegisterUser = [
         .withMessage("Password must be at least 6 characters long"),
     validateRequest,
 ];
+
+export const validateLoginUser = [
+    body("email")
+        .trim()
+        .isEmail()
+        .withMessage("Invalid email format"),
+    body("password")
+        .trim()
+        .notEmpty()
+        .withMessage("Password is required"),
+    validateRequest,
+];      

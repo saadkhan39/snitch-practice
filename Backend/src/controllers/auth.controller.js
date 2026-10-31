@@ -57,3 +57,32 @@ export const register = async(req,res)=>{
         return res.status(500).json({ message: "Server error" });
     }
 }
+
+export const login = async (req, res) => {
+    const { email, password } = req.body;
+
+    try{
+        const user = await userModel.findOne({ email });
+
+        if(!user){
+            return res.status(400).json({
+                success:false,
+                message:"User not found with this email"
+            })
+        }
+
+        const isPasswordMatch = await user.comparePassword(password);
+
+        if(!isPasswordMatch){
+            return res.status(400).json({
+                success:false,
+                message:"Invalid password"
+            })
+        }
+
+        await sendResponseToken(user, res, "User logged in successfully");
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Server error" });
+    }
+}   
