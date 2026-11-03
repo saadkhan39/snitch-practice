@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { useAuth } from "../hooks/useAuth.js";
+import ContinueWithGoogle from "../Components/ContinueWithGoogle.jsx";
 
 const Login = () => {
   const { handleLogin } = useAuth();
@@ -277,6 +278,11 @@ const Login = () => {
                   Create an account
                 </Link>
               </p>
+
+
+                {/* Google SSO */}
+                            <ContinueWithGoogle />
+
             </form>
           </div>
         </section>
