@@ -1,5 +1,6 @@
 import express from "express"
 import authRoutes from "./routes/auth.routes.js"
+import productRoutes from "./routes/product.routes.js"
 import cookieParser from "cookie-parser"
 import morgan from "morgan"
 import passport from "passport"
@@ -28,6 +29,6 @@ passport.use(new GoogleStrategy({
 
 //routes
 app.use("/api/auth", authRoutes)
-
+app.use("/api/products", productRoutes)
 
 export default app
